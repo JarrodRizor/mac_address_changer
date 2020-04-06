@@ -2,6 +2,7 @@
 
 import subprocess
 import optparse
+import argparse
 
 parser = optparse.OptionParser()
 
@@ -15,6 +16,6 @@ new_mac_address = options.new_mac_address
 
 print("[+] Changing MAC address for " + interface + " to " + new_mac_address)
 
-subprocess.call(["ifconfig", interface, "down"])
-subprocess.call(["ifconfig", interface, "hw", "ether", new_mac_address])
-subprocess.call(["ifconfig", interface, "up"])
+subprocess.call(["ip", "link", "set", "dev", interface, "down"])
+subprocess.call(["ip", "link", "set", "dev", interface, "address", new_mac_address])
+subprocess.call(["ip", "link", "set", "dev", interface, "up"])
