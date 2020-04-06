@@ -2,10 +2,11 @@
 
 import subprocess
 
-interface = "enp0s3"
-new_mac_address = "00:01:02:03:04:05"
+interface = input("interface > ")
+new_mac_address = input("new MAC > ")
+
 print("[+] Changing MAC address for " + interface + " to " + new_mac_address)
 
-# subprocess.call("ip link set interface down", shell=True)
-# subprocess.call("ip link set interface address 00:01:02:03:04:05", shell=True)
-# subprocess.call("ip link set interface up", shell=True)
+subprocess.call("ifconfig " + interface + " down", shell=True)
+subprocess.call("ifconfig " + interface + " hw_ether " + new_mac_address, shell=True)
+subprocess.call("ifconfig " + interface + " up", shell=True)
