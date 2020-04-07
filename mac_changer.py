@@ -7,10 +7,11 @@ import argparse
 parser = argparse.ArgumentParser("Change Mac Address")
 
 # Parser Arguments values
-parser.add_argument("-i", action="store", dest="interface",
+parser.add_argument("-i", "--interface", metavar="", required=True, dest="interface",
                     help="Select Interface you wish to change MAC Address on.")
-parser.add_argument("-m", action="store", dest="new_mac_address",
+parser.add_argument("-m", "--mac", metavar="", required=True, dest="new_mac_address",
                     help="What you would like the MAC Address to be.")
+
 args = parser.parse_args()
 
 #Storing data given from CLI Arguments
